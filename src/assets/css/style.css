@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/* setting */
+@import url('./setting/_vars.css');
+@import url('./setting/_reset.css');
+
+/* section */
+
+/* 전역 설정 */
+body {
+  color: var(--white);
+  background-color: var(--mainBg200);
+}

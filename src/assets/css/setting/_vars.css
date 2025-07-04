@@ -1,0 +1,13 @@
+:root {
+  /* 배경색 */
+  --mainBg100: #2d3748;
+  --mainBg200: #1a202c;
+
+  --subBg100: #fed7e2;
+  --subBg200: #fbb6ce;
+
+  /* 기본 색상 세트 */
+  --white: #fff;
+  --black: #000;
+  --grey: #c7c7c7;
+}
