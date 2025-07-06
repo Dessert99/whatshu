@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
 :root {
   /* 배경색 */
   --mainBg100: #2d3748;
@@ -10,4 +12,7 @@
   --white: #fff;
   --black: #000;
   --grey: #c7c7c7;
+
+  /* 폰트 */
+  --titleFont: 'Bagel Fat One';
 }
