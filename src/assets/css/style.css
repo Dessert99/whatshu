@@ -5,9 +5,13 @@
 @import url('./setting/_reset.css');
 
 /* section */
+@import url('./section/header.css');
+@import url('./section/footer.css');
+@import url('./section/homeView.css');
 
 /* 전역 설정 */
 body {
+  /* margin: 0; */
   color: var(--white);
   background-color: var(--mainBg200);
 }

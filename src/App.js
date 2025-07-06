@@ -1,13 +1,12 @@
-import './App.css';
 import './assets/css/style.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import HomeView from './views/HomeView';
 
 function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -15,7 +14,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
