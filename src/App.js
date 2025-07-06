@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 import './assets/css/style.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/header';
+import Footer from './components/footer';
 import HomeView from './views/HomeView';
-=======
-import "./App.css";
-import "./assets/css/style.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import HomeView from "./views/HomeView";
-import NewEventPage from "./views/NewEventPage";
->>>>>>> main
+import NewEventPage from './views/NewEventPage';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Header />
         <Routes>
