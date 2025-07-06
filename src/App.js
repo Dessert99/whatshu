@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import HomeView from './views/HomeView';
 import NewEventPage from './views/NewEventPage';
+import GroupView from './views/GroupView';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomeView />} />
+          <Route path="/group" element={<GroupView />} />
           <Route path="/" element={<NewEventPage />} />
         </Routes>
         <Footer />
