@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeView />} />
           <Route path="/group" element={<GroupView />} />
-          <Route path="/" element={<NewEventPage />} />
+          <Route path="/event" element={<NewEventPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

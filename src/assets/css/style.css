@@ -8,7 +8,6 @@
 @import url('./section/header.css');
 @import url('./section/footer.css');
 @import url('./section/homeView.css');
-@import url('./section//_group.module.css');
 
 /* 전역 설정 */
 body {
