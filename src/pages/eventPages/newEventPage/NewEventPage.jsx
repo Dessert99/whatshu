@@ -1,5 +1,5 @@
-import React from "react";
-import "./NewEventPage.css";
+import React from 'react';
+import './NewEventPage.module.css';
 
 const NewEventPage = () => {
   return (
@@ -20,12 +20,7 @@ const NewEventPage = () => {
           <label className="form-label">
             이벤트 이름 <span className="required">*</span>
           </label>
-          <input
-            type="text"
-            name="eventName"
-            className="form-input"
-            placeholder="이벤트 이름을 입력하세요"
-          />
+          <input type="text" name="eventName" className="form-input" placeholder="이벤트 이름을 입력하세요" />
         </div>
 
         {/* 이벤트 시간 */}
@@ -33,11 +28,7 @@ const NewEventPage = () => {
           <label className="form-label">
             이벤트 시간 <span className="required">*</span>
           </label>
-          <input
-            type="datetime-local"
-            name="eventTime"
-            className="form-input"
-          />
+          <input type="datetime-local" name="eventTime" className="form-input" />
         </div>
 
         {/* 이벤트 장소 */}
@@ -45,12 +36,7 @@ const NewEventPage = () => {
           <label className="form-label">
             이벤트 장소 <span className="required">*</span>
           </label>
-          <input
-            type="text"
-            name="eventLocation"
-            className="form-input"
-            placeholder="장소를 입력하세요"
-          />
+          <input type="text" name="eventLocation" className="form-input" placeholder="장소를 입력하세요" />
         </div>
 
         {/* 이벤트 설명 */}

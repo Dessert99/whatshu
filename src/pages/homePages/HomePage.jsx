@@ -1,4 +1,5 @@
 import React from 'react';
+import './homePage.module.css';
 
 const HomeView = () => {
   return (

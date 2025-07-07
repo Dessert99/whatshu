@@ -1,7 +1,8 @@
-import users from '../assets/img/users.png';
-import calendar from '../assets/img/calendar.png';
-import userCheck from '../assets/img/userCheck.png';
-import helpCircle from '../assets/img/helpCircle.png';
+import users from '../../assets/img/users.png';
+import calendar from '../../assets/img/calendar.png';
+import userCheck from '../../assets/img/userCheck.png';
+import helpCircle from '../../assets/img/helpCircle.png';
+import './footer.module.css';
 
 const Footer = () => {
   return (

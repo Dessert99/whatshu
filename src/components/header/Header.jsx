@@ -1,6 +1,7 @@
-import logo from '../assets/img/logo.png';
-import setting from '../assets/img/setting.png';
-import notification from '../assets/img/notification.png';
+import logo from '../../assets/img/logo.png';
+import setting from '../../assets/img/setting.png';
+import notification from '../../assets/img/notification.png';
+import './header.module.css';
 
 const Header = () => {
   return (
