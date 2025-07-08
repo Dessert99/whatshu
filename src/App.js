@@ -1,9 +1,9 @@
-import './assets/css/style.css';
+import './assets/css/style.module.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/header';
-import Footer from './components/footer';
-import NewEventPage from './views/NewEventPage';
-import GroupView from './views/GroupView';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import NewEventPage from './pages/newEventPage/NewEventPage';
+import GroupView from './pages/GroupView';
 
 function App() {
   return (

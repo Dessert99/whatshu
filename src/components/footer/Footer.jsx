@@ -1,11 +1,12 @@
-import users from '../assets/img/users.png';
-import calendar from '../assets/img/calendar.png';
-import userCheck from '../assets/img/userCheck.png';
-import helpCircle from '../assets/img/helpCircle.png';
+import users from '../../assets/img/users.png';
+import calendar from '../../assets/img/calendar.png';
+import userCheck from '../../assets/img/userCheck.png';
+import helpCircle from '../../assets/img/helpCircle.png';
+import styles from './footer.module.css';
 
 const Footer = () => {
   return (
-    <nav className="footer__inner">
+    <nav className={styles.footer__inner}>
       <div className="footer__users">
         <img src={users} alt="유저" />
       </div>
