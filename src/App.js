@@ -2,8 +2,8 @@ import './assets/css/style.module.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import HomeView from './pages/homePages/HomePage';
-import NewEventPage from './pages/eventPages/newEventPage/NewEventPage';
+import NewEventPage from './pages/newEventPage/NewEventPage';
+import GroupView from './pages/GroupView';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/" element={<NewEventPage />} />
+          <Route path="/" element={<GroupView />} />
+          <Route path="/event" element={<NewEventPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
