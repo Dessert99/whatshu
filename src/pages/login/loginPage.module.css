@@ -1,0 +1,18 @@
+.login__inner {
+  /* 나중에 수정 */
+  margin-top: 300px;
+}
+
+.login__icon {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+}
+
+.login__google {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
