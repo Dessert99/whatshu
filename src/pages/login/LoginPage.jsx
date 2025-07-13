@@ -1,28 +1,22 @@
-import { GoogleLogin } from '@react-oauth/google';
 import styles from './loginPage.module.css';
 import loginIcon from '../../assets/img/loginIcon.png';
+import googleLogin from '../../assets/img/googleLogin.png';
 
 const LoginPage = () => {
   return (
-    <>
+    <section className={styles.login__wrapper}>
       <div className={styles.login__inner}>
         <div className={styles.login__icon}>
           <img src={loginIcon} alt="로그인 아이콘" />
         </div>
-        <div className={styles.login__google}>
-          <GoogleLogin
-            shape="pill" // 둥근 모서리 옵션
-            onSuccess={(credentialResponse) => {
-              console.log(credentialResponse);
-              alert('로그인 성공');
-            }}
-            onError={() => {
-              console.log('로그인 실패 ㅠㅠ');
-            }}
-          />
-        </div>
+
+        <a href={process.env.REACT_APP_Google_Login_URL}>
+          <div className={styles.login__btn}>
+            <img src={googleLogin} alt="로그인버튼" />
+          </div>
+        </a>
       </div>
-    </>
+    </section>
   );
 };
 
