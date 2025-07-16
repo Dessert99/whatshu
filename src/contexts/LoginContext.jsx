@@ -1,6 +1,6 @@
-import { useState, createContext, useEffect } from 'react';
+import { useState, createContext } from 'react';
 
-export const LoginContext = createContext({ value: 'default' });
+export const LoginContext = createContext(null);
 
 export const LoginContextProvider = ({ children }) => {
   // 상태
@@ -19,7 +19,7 @@ export const LoginContextProvider = ({ children }) => {
 
   return (
     <>
-      <LoginContext.Provider value={{ isLogin }}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{}}>{children}</LoginContext.Provider>
     </>
   );
 };

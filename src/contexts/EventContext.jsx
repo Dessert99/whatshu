@@ -1,4 +1,4 @@
-import { useState, createContext, Children } from 'react';
+import { useState, createContext } from 'react';
 
 export const EventContext = createContext(null);
 
