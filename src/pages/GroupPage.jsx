@@ -1,7 +1,6 @@
-import React from 'react';
 import GroupCard from '../components/groupCard/GroupCard';
 
-const GroupView = () => {
+const GroupPage = () => {
   return (
     <div>
       <GroupCard title="GDG on Campus HUFS" subTitle="한국외대의 GDGoC" memberCount="50" todoCount="0" doneCount="0" />
@@ -24,4 +23,4 @@ const GroupView = () => {
   );
 };
 
-export default GroupView;
+export default GroupPage;
