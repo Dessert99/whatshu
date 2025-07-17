@@ -10,7 +10,7 @@ const LoginPage = () => {
           <img src={loginIcon} alt="로그인 아이콘" />
         </div>
 
-        <a href={process.env.REACT_APP_Google_Login_URL}>
+        <a href={'https://api-dev.whatshu.com/auth/google/login'}>
           <div className={styles.login__btn}>
             <img src={googleLogin} alt="로그인버튼" />
           </div>
