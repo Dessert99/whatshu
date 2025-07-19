@@ -1,4 +1,3 @@
-import './assets/css/style.module.css';
 import { Route, Routes } from 'react-router-dom';
 
 //페이지

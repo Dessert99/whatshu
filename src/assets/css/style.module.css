@@ -5,8 +5,10 @@
 @import url('./setting/_reset.css');
 
 /* 전역 설정 */
+
 body {
-  /* margin: 0; */
   color: var(--white);
-  background-color: var(--mainBg200);
+  background-color: var(--mainBg300);
+  margin: 0;
+  padding: 0;
 }
