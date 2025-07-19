@@ -1,0 +1,161 @@
+import Modal from 'react-modal';
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+
+Modal.setAppElement('#root');
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--mainBg400);
+  border-radius: 12px;
+`;
+const Wrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+const Title = styled.p`
+  margin: 0;
+  font-size: 1.2rem;
+`;
+const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  input {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: solid;
+    border-color: var(--grey);
+    font-size: 1rem;
+    background-color: var(--mainBg400);
+    color: var(--white);
+  }
+`;
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    &.cancel {
+      background-color: var(--mainBg500);
+      color: var(--white);
+    }
+
+    &.submit {
+      background-color: var(--subBg200);
+      color: var(--black);
+    }
+  }
+`;
+const RedFont = styled.span`
+  color: var(--subBg200);
+`;
+
+export default function GroupModal({ isOpen, onClose }) {
+  const [info, setInfo] = useState({
+    'groupName': '',
+    'description': '',
+    'invitedCode': '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(info);
+    onClose();
+  };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setInfo({ 'groupName': '', 'description': '', 'invitedCode': '' });
+    }
+  }, [isOpen]);
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      style={{
+        content: {
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'transparent',
+          border: 'none',
+        },
+        overlay: {
+          backgroundColor: 'rgba(0,0,0,0.5)',
+        },
+      }}>
+      <form onSubmit={handleSubmit}>
+        <Container>
+          <Wrapper>
+            <Title>그룹 정보</Title>
+            <InputBox>
+              <label>
+                그룹 이름 <RedFont>*</RedFont>
+              </label>
+              <input
+                type="text"
+                value={info.groupName}
+                onChange={(e) => {
+                  setInfo({
+                    ...info,
+                    groupName: e.target.value,
+                  });
+                }}
+              />
+            </InputBox>
+            <InputBox>
+              <label>
+                그룹 설명 <RedFont>*</RedFont>
+              </label>
+              <input
+                type="text"
+                value={info.description}
+                onChange={(e) => {
+                  setInfo({
+                    ...info,
+                    description: e.target.value,
+                  });
+                }}
+              />
+            </InputBox>
+            <InputBox>
+              <label>초대 코드</label>
+              <input
+                type="text"
+                value={info.invitedCode}
+                onChange={(e) => {
+                  setInfo({
+                    ...info,
+                    invitedCode: e.target.value,
+                  });
+                }}
+              />
+            </InputBox>
+            <ButtonBox>
+              <button type="button" className="cancel" onClick={onClose}>
+                취소
+              </button>
+              <button type="submit" className="submit">
+                생성
+              </button>
+            </ButtonBox>
+          </Wrapper>
+        </Container>
+      </form>
+    </Modal>
+  );
+}

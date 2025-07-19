@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 :root {
   /* 배경색 */
   --mainBg100: #2d3748;
   --mainBg200: #1a202c;
+  --mainBg300: #222731;
+  --mainBg400: #2d3748;
+  --mainBg500: #3d4756;
 
   --subBg100: #fed7e2;
   --subBg200: #fbb6ce;
@@ -15,4 +19,5 @@
 
   /* 폰트 */
   --titleFont: 'Bagel Fat One';
+  --buttonFont: 'Noto Sans KR';
 }
