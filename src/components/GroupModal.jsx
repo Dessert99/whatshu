@@ -77,6 +77,12 @@ export default function GroupModal({ isOpen, onClose }) {
     onClose();
   };
 
+  //   const handleAddGroup = async () => {
+  //   const res = await api.createGroupApi(data);
+  //   const newGroup = res.data.result;
+  //   setGroupList(prev => [...prev, newGroup]);
+  // };
+
   useEffect(() => {
     if (!isOpen) {
       setInfo({ 'groupName': '', 'description': '', 'invitedCode': '' });
@@ -90,6 +96,8 @@ export default function GroupModal({ isOpen, onClose }) {
         content: {
           top: '50%',
           left: '50%',
+          width: '60%',
+          height: '60%',
           transform: 'translate(-50%, -50%)',
           background: 'transparent',
           border: 'none',
@@ -132,19 +140,7 @@ export default function GroupModal({ isOpen, onClose }) {
                 }}
               />
             </InputBox>
-            <InputBox>
-              <label>초대 코드</label>
-              <input
-                type="text"
-                value={info.invitedCode}
-                onChange={(e) => {
-                  setInfo({
-                    ...info,
-                    invitedCode: e.target.value,
-                  });
-                }}
-              />
-            </InputBox>
+
             <ButtonBox>
               <button type="button" className="cancel" onClick={onClose}>
                 취소
