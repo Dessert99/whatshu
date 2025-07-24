@@ -73,7 +73,7 @@ export default function GroupModal({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(info);
+    console.log(info); //TODO: 그룹 정보 로그 없애기
     onClose();
   };
 

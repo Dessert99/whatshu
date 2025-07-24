@@ -38,7 +38,7 @@ const LoginButton = styled.button`
 `;
 
 const MainPage = () => {
-  const { userInfo, loginSetting, isLogin } = useContext(LoginContext);
+  const { userInfo, isLogin, setLogin, setUserInfo } = useContext(LoginContext);
   const [cookies] = useCookies(['accessToken']);
 
   useEffect(() => {
@@ -46,16 +46,21 @@ const MainPage = () => {
       try {
         const res = await loginApi();
         const { id, name, role } = res.data.result;
-        loginSetting(id, name, role);
+        setUserInfo({
+          'id': id,
+          'name': name,
+          'role': role,
+        });
+        setLogin(true);
       } catch (e) {
         console.error(e);
       }
     };
     login();
-  }, [loginSetting]);
+  }, [setUserInfo, setLogin]);
 
   useEffect(() => {
-    console.log('jwt:', cookies.accessToken);
+    console.log('jwt:', cookies.accessToken); // TODO: 토큰 로그 없애기
   }, [cookies.accessToken]);
 
   return (
