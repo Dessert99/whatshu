@@ -55,7 +55,7 @@ const Button = styled.button`
   }
 `;
 
-const groupCard = (props) => {
+const GroupCard = (props) => {
   return (
     <Container>
       <Header>
@@ -85,4 +85,4 @@ const groupCard = (props) => {
   );
 };
 
-export default groupCard;
+export default GroupCard;

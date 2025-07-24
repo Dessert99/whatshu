@@ -2,10 +2,10 @@ import GroupCard from '../components/groupCard/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import * as api from '../apis/groupApi';
-import { EventContext } from '../contexts/EventContext';
-import { getEventsApi } from '../apis/eventApi';
+// import { EventContext } from '../contexts/EventContext';
+// import { getEventsApi } from '../apis/eventApi';
 
 const Container = styled.div``;
 
@@ -29,11 +29,12 @@ const NoMember = styled.p`
 const GroupPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [groupList, setGroupList] = useState([]);
-  const { events, setEvents } = useContext(EventContext);
+  // const { events, setEvents } = useContext(EventContext);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
+  //그룹 조회
   useEffect(() => {
     const getGroups = async () => {
       try {
@@ -46,17 +47,18 @@ const GroupPage = () => {
     getGroups();
   }, []);
 
-  useEffect(() => {
-    const getEvents = async () => {
-      try {
-        const res = await getEventsApi();
-        setEvents(res.data.result);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    getEvents();
-  }, []);
+  //TODO:이벤트 조회
+  // useEffect(() => {
+  //   const getEvents = async () => {
+  //     try {
+  //       const res = await getEventsApi();
+  //       setEvents(res.data.result);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   getEvents();
+  // }, []);
 
   return (
     <Container>
@@ -69,7 +71,20 @@ const GroupPage = () => {
           <NoMember>그룹을 추가해 주세요</NoMember>
         </NoMemberWrapper>
       ) : (
-        <GroupsWrapper>{groupList.map((group) => {})}</GroupsWrapper>
+        <GroupsWrapper>
+          {groupList.map((group) => {
+            return (
+              <GroupCard
+                name={group.name}
+                description={group.description}
+                memberCount={1}
+                groupUuid={group.groupUuid}
+                todoCount={50}
+                doneCount={40}
+              />
+            );
+          })}
+        </GroupsWrapper>
       )}
 
       <GroupModal isOpen={isOpen} onClose={closeModal} />
