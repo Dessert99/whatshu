@@ -4,6 +4,7 @@ import { useEffect, useContext } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
 import { loginApi } from '../apis/userApi';
 import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const Container = styled.div`
   height: calc(100vh - 10.5rem);
@@ -38,6 +39,7 @@ const LoginButton = styled.button`
 
 const MainPage = () => {
   const { userInfo, loginSetting, isLogin } = useContext(LoginContext);
+  const [cookies] = useCookies(['accessToken']);
 
   useEffect(() => {
     const login = async () => {
@@ -51,6 +53,10 @@ const MainPage = () => {
     };
     login();
   }, [loginSetting]);
+
+  useEffect(() => {
+    console.log('jwt:', cookies.accessToken);
+  }, [cookies.accessToken]);
 
   return (
     <>
