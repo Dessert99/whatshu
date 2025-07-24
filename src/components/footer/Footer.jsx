@@ -32,8 +32,8 @@ const Footer = () => {
     <Container>
       <Wrapper>
         <IconBox>
-          <Link to="/">
-            <Img src={users} alt="유저" />
+          <Link to="/group">
+            <Img src={users} alt="그룹" />
           </Link>
         </IconBox>
         <IconBox>

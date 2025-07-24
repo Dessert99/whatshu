@@ -8,14 +8,7 @@ export const EventContextProvider = ({ children }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [participants, setParticipants] = useState([]);
 
-  //이벤트 세팅
-
-  //1) 이벤트 조회
-  const updateEvents = (events) => {
-    setEvents(events);
-  };
-
-  //2) 선택된 이벤트
+  //) 선택된 이벤트
   const selectEvent = (event) => {
     setSelectedEvent(event);
   };
@@ -30,10 +23,11 @@ export const EventContextProvider = ({ children }) => {
       <EventContext.Provider
         value={{
           events,
+          setEvents,
           selectedEvent,
           participants,
           selectEvent,
-          updateEvents,
+
           updateParticipants,
         }}>
         {children}

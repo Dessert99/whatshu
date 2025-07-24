@@ -1,7 +1,7 @@
 import logo from '../../assets/img/logo.png';
 import setting from '../../assets/img/setting.png';
 import notification from '../../assets/img/notification.png';
-// import { Link } from 'react-router-dom'; TODO: css 리셋하고 수정
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -35,10 +35,12 @@ const Header = () => {
         <IconBox>
           <Img src={setting} alt="설정" />
         </IconBox>
-        <IconBox>
-          <Img src={logo} alt="로고" />
-          <Font>WhatShu</Font>
-        </IconBox>
+        <Link to="/">
+          <IconBox>
+            <Img src={logo} alt="로고" />
+            <Font>WhatShu</Font>
+          </IconBox>
+        </Link>
         <IconBox>
           <Img src={notification} alt="알림" />
         </IconBox>

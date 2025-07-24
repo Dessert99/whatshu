@@ -17,7 +17,7 @@ export const useEvent = () => {
 
   const createEvent = async (data) => {
     const response = await eventApi.createEventApi(data);
-    return response.status; // TODO: 스웨거 보고 이벤트 생성 로직을 만들지 그냥 조회를 할지 결정
+    return response.status;
   };
 
   return {

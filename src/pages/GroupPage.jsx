@@ -1,58 +1,91 @@
-// import GroupCard from '../components/groupCard/GroupCard';
+import GroupCard from '../components/groupCard/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as api from '../apis/groupApi';
+// import { EventContext } from '../contexts/EventContext';
+// import { getEventsApi } from '../apis/eventApi';
 
-// const dummy = [
-//   {
-//     title: 'GDG on Campus HUFS',
-//     subTitle: '한국외대의 GDGoC',
-//     memberCount: 50,
-//     todoCount: 0,
-//     doneCount: 0,
-//   },
-//   {
-//     title: 'HUFS N-CUBE 학회',
-//     subTitle: '한국외대 컴공 소속 학회',
-//     memberCount: 30,
-//     todoCount: 30,
-//     doneCount: 2,
-//   },
-//   {
-//     title: '차세대 보안리더 양성 프로그램',
-//     subTitle: '한국정보기술연구원',
-//     memberCount: 100,
-//     todoCount: 1232515,
-//     doneCount: 1,
-//   },
-//   {
-//     title: '대한민국',
-//     subTitle: '대한민국?',
-//     memberCount: 50000000000,
-//     todoCount: 100,
-//     doneCount: 2,
-//   },
-// ];
 const Container = styled.div``;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding: 1rem;
 `;
-const GroupList = styled.div``;
+const GroupsWrapper = styled.div``;
+const NoMemberWrapper = styled.div`
+  height: calc(100vh - 20rem);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const NoMember = styled.p`
+  opacity: 0.6;
+`;
 
 const GroupPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [groupList, setGroupList] = useState([]);
+  // const { events, setEvents } = useContext(EventContext);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+
+  //그룹 조회
+  useEffect(() => {
+    const getGroups = async () => {
+      try {
+        const res = await api.getGroupsApi();
+        setGroupList(res.data.result);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    getGroups();
+  }, []);
+
+  //TODO:이벤트 조회
+  // useEffect(() => {
+  //   const getEvents = async () => {
+  //     try {
+  //       const res = await getEventsApi();
+  //       setEvents(res.data.result);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   getEvents();
+  // }, []);
 
   return (
     <Container>
       <ButtonWrapper>
         <Button onClick={openModal}>+ 새 그룹</Button>
       </ButtonWrapper>
-      <GroupList></GroupList>
+
+      {groupList.length === 0 ? (
+        <NoMemberWrapper>
+          <NoMember>그룹을 추가해 주세요</NoMember>
+        </NoMemberWrapper>
+      ) : (
+        <GroupsWrapper>
+          {groupList.map((group) => {
+            return (
+              <GroupCard
+                name={group.name}
+                description={group.description}
+                memberCount={1}
+                groupUuid={group.groupUuid}
+                todoCount={50}
+                doneCount={40}
+              />
+            );
+          })}
+        </GroupsWrapper>
+      )}
 
       <GroupModal isOpen={isOpen} onClose={closeModal} />
     </Container>

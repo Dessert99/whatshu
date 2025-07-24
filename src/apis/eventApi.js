@@ -10,7 +10,7 @@ export const getDetailEventApi = (eventId) => {
   return api.get(`/events/${eventId}`);
 };
 
-//이벤트 생성 -> 아직 스웨거에 없음
+//이벤트 추가
 export const createEventApi = (data) => {
   return api.post('/events', data);
 };
