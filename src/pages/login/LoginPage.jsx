@@ -4,7 +4,7 @@ import googleLogin from '../../assets/img/googleLogin.png';
 
 const LoginPage = () => {
   const handleLogin = () => {
-    window.location.href = 'https://api.whatshu.com/auth/google/login';
+    window.location.href = 'https://api-dev.whatshu.com/auth/google/login';
   };
 
   return (
