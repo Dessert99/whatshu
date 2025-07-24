@@ -14,20 +14,12 @@ export const LoginContextProvider = ({ children }) => {
   });
 
   // 로그인세팅
-  const loginSetting = (id, name, role) => {
-    setUserInfo({
-      'id': id,
-      'name': name,
-      'role': role,
-    });
-    setLogin(true);
-  };
 
   // const logoutSetting = (userData) => {};
 
   return (
     <>
-      <LoginContext.Provider value={{ isLogin, userInfo, loginSetting }}>{children}</LoginContext.Provider>
+      <LoginContext.Provider value={{ isLogin, userInfo, setLogin, setUserInfo }}>{children}</LoginContext.Provider>
     </>
   );
 };
