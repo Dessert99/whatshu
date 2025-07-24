@@ -1,21 +1,21 @@
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import { getDetailGroupApi } from '../apis/groupApi';
-import { useEffect } from 'react';
+// import styled from 'styled-components';
+// import { useParams } from 'react-router-dom';
+// import { getDetailGroupApi } from '../apis/groupApi';
+// import { useEffect } from 'react';
 
 const GroupDetailPage = () => {
-  const { groupUuid } = useParams();
+  // const { groupUuid } = useParams();
 
-  useEffect(() => {
-    const getDetailGroup = async (groupUuid) => {
-      try {
-        const res = await getDetailGroupApi(groupUuid);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    getDetailGroup(groupUuid);
-  }, []);
+  // useEffect(() => {
+  //   const getDetailGroup = async (groupUuid) => {
+  //     try {
+  //       const res = await getDetailGroupApi(groupUuid);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   getDetailGroup(groupUuid);
+  // }, []);
 
   return (
     <div>
