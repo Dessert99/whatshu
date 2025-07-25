@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { createGroupApi } from '../apis/groupApi';
 
 Modal.setAppElement('#root');
 
@@ -64,28 +65,31 @@ const RedFont = styled.span`
   color: var(--subBg200);
 `;
 
-export default function GroupModal({ isOpen, onClose }) {
+export default function GroupModal({ isOpen, onClose, getGroups }) {
   const [info, setInfo] = useState({
-    'groupName': '',
+    'name': '',
     'description': '',
-    'invitedCode': '',
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(info); //TODO: 그룹 정보 로그 없애기
+    handleAddGroup(info);
+    getGroups();
     onClose();
   };
 
-  //   const handleAddGroup = async () => {
-  //   const res = await api.createGroupApi(data);
-  //   const newGroup = res.data.result;
-  //   setGroupList(prev => [...prev, newGroup]);
-  // };
+  const handleAddGroup = async (info) => {
+    const res = await createGroupApi(info);
+    if (res.data.isSuccess) {
+      alert('새로운 그룹이 생성되었습니다.');
+    } else {
+      alert('그룹 생성에 실패하였습니다.');
+    }
+  };
 
   useEffect(() => {
     if (!isOpen) {
-      setInfo({ 'groupName': '', 'description': '', 'invitedCode': '' });
+      setInfo({ 'name': '', 'description': '' });
     }
   }, [isOpen]);
   return (
@@ -116,11 +120,11 @@ export default function GroupModal({ isOpen, onClose }) {
               </label>
               <input
                 type="text"
-                value={info.groupName}
+                value={info.name}
                 onChange={(e) => {
                   setInfo({
                     ...info,
-                    groupName: e.target.value,
+                    name: e.target.value,
                   });
                 }}
               />

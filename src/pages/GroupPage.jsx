@@ -7,7 +7,9 @@ import * as api from '../apis/groupApi';
 // import { EventContext } from '../contexts/EventContext';
 // import { getEventsApi } from '../apis/eventApi';
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-bottom: 5rem;
+`;
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -29,21 +31,24 @@ const NoMember = styled.p`
 const GroupPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [groupList, setGroupList] = useState([]);
+
   // const { events, setEvents } = useContext(EventContext);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  //그룹 조회
+  //그룹 조회 함수
+  const getGroups = async () => {
+    try {
+      const res = await api.getGroupsApi();
+      setGroupList(res.data.result);
+      console.log('그룹 리스트 조회: ', res.data.result); // TODO: 그룹 조회 로그
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
-    const getGroups = async () => {
-      try {
-        const res = await api.getGroupsApi();
-        setGroupList(res.data.result);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     getGroups();
   }, []);
 
@@ -75,6 +80,7 @@ const GroupPage = () => {
           {groupList.map((group) => {
             return (
               <GroupCard
+                key={group.groupUuid}
                 name={group.name}
                 description={group.description}
                 memberCount={1}
@@ -87,7 +93,7 @@ const GroupPage = () => {
         </GroupsWrapper>
       )}
 
-      <GroupModal isOpen={isOpen} onClose={closeModal} />
+      <GroupModal isOpen={isOpen} onClose={closeModal} getGroups={getGroups} />
     </Container>
   );
 };

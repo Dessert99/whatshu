@@ -4,7 +4,6 @@ import { useEffect, useContext } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
 import { loginApi } from '../apis/userApi';
 import { Link } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 
 const Container = styled.div`
   height: calc(100vh - 10.5rem);
@@ -39,7 +38,6 @@ const LoginButton = styled.button`
 
 const MainPage = () => {
   const { userInfo, isLogin, setLogin, setUserInfo } = useContext(LoginContext);
-  const [cookies] = useCookies(['accessToken']);
 
   useEffect(() => {
     const login = async () => {
@@ -58,10 +56,6 @@ const MainPage = () => {
     };
     login();
   }, [setUserInfo, setLogin]);
-
-  useEffect(() => {
-    console.log('jwt:', cookies.accessToken); // TODO: 토큰 로그 없애기
-  }, [cookies.accessToken]);
 
   return (
     <>
