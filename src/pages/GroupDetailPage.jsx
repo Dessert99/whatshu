@@ -1,10 +1,19 @@
-// import styled from 'styled-components';
-// import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import GroupInfo from '../components/detailComponents/GroupInfo';
+import SwitchMain from '../components/detailComponents/SwitchMain';
 // import { getDetailGroupApi } from '../apis/groupApi';
 // import { useEffect } from 'react';
+const Container = styled.div`
+  height: calc(100vh - 10.5rem);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 const GroupDetailPage = () => {
-  // const { groupUuid } = useParams();
+  const { groupId } = useParams();
 
   // useEffect(() => {
   //   const getDetailGroup = async (groupUuid) => {
@@ -15,12 +24,13 @@ const GroupDetailPage = () => {
   //     }
   //   };
   //   getDetailGroup(groupUuid);
-  // }, []);
+  // }, []); TODO: 그룹 정보 받아오는 로직 구현해야 함.
 
   return (
-    <div>
-      <h1>디테일 페이지 입니다.</h1>
-    </div>
+    <Container>
+      <GroupInfo />
+      <SwitchMain groupId={groupId} />
+    </Container>
   );
 };
 

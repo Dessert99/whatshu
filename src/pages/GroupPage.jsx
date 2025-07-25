@@ -2,15 +2,12 @@ import GroupCard from '../components/groupCard/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import * as api from '../apis/groupApi';
-// import { EventContext } from '../contexts/EventContext';
-// import { getEventsApi } from '../apis/eventApi';
 
 const Container = styled.div`
   padding-bottom: 5rem;
 `;
-
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -32,38 +29,22 @@ const GroupPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [groupList, setGroupList] = useState([]);
 
-  // const { events, setEvents } = useContext(EventContext);
-
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   //그룹 조회 함수
-  const getGroups = async () => {
+  const getGroups = useCallback(async () => {
     try {
       const res = await api.getGroupsApi();
       setGroupList(res.data.result);
-      console.log('그룹 리스트 조회: ', res.data.result); // TODO: 그룹 조회 로그
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getGroups();
-  }, []);
-
-  //TODO:이벤트 조회
-  // useEffect(() => {
-  //   const getEvents = async () => {
-  //     try {
-  //       const res = await getEventsApi();
-  //       setEvents(res.data.result);
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   };
-  //   getEvents();
-  // }, []);
+  }, [getGroups]);
 
   return (
     <Container>
@@ -80,11 +61,11 @@ const GroupPage = () => {
           {groupList.map((group) => {
             return (
               <GroupCard
-                key={group.groupUuid}
+                key={group.groupId}
                 name={group.name}
                 description={group.description}
                 memberCount={1}
-                groupUuid={group.groupUuid}
+                groupId={group.groupId}
                 todoCount={50}
                 doneCount={40}
               />

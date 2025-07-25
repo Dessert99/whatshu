@@ -3,6 +3,9 @@ import setting from '../../assets/img/setting.png';
 import notification from '../../assets/img/notification.png';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+// import { useContext } from 'react';
+// import { LoginContext } from '../../contexts/LoginContext';
+// import { authUpgradeApi } from '../../apis/userApi';
 
 const Container = styled.div`
   background-color: var(--mainBg200);
@@ -29,11 +32,13 @@ const Img = styled.img`
 `;
 
 const Header = () => {
+  // const { userInfo, setUserInfo } = useContext(LoginContext);
+
   return (
     <Container>
       <Wrapper>
         <IconBox>
-          <Img src={setting} alt="설정" />
+          <Img src={setting} alt="set" />
         </IconBox>
         <Link to="/">
           <IconBox>
