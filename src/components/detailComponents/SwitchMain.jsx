@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import EventPanel from './EventPanel';
+import SettingPanel from './SettingPanel';
 
 const Container = styled.div`
   height: 3rem;
@@ -30,7 +31,7 @@ const SwitchMain = (props) => {
         설정
       </Button>
       {activeTab === 'event' && <EventPanel groupId={props.groupId} />}
-      {/* // {activeTab === 'setting' && <SettingPanel />} */}
+      {activeTab === 'setting' && <SettingPanel />}
     </Container>
   );
 };

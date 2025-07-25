@@ -87,7 +87,7 @@ const EventModal = ({ isOpen, onClose, getEvents, groupId }) => {
     if (!isOpen) {
       setInfo({ 'name': '', 'startAt': '', 'endAt': '', 'description': '', groupId: groupId });
     }
-  }, [isOpen]);
+  }, [isOpen, groupId]);
 
   return (
     <Modal

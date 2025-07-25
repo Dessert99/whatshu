@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '../Button';
 import EventModal from '../EventModal';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useCallback } from 'react';
 import EventCard from '../EventCard';
 import { EventContext } from '../../contexts/EventContext';
 import { getEventsApi } from '../../apis/eventApi';
@@ -37,17 +37,17 @@ const EventPanel = (props) => {
   const closeModal = () => setIsOpen(false);
 
   // 이벤트 조회 함수
-  const getEvents = async () => {
+  const getEvents = useCallback(async () => {
     try {
       const res = await getEventsApi();
       setEvents(res.data.result);
     } catch (e) {
       console.error(e);
     }
-  };
+  }, [setEvents]);
   useEffect(() => {
     getEvents();
-  }, [events]);
+  }, [getEvents]);
 
   return (
     <Container>

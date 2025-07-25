@@ -24,7 +24,7 @@ const GroupDetailPage = () => {
   //     }
   //   };
   //   getDetailGroup(groupUuid);
-  // }, []);
+  // }, []); TODO: 그룹 정보 받아오는 로직 구현해야 함.
 
   return (
     <Container>

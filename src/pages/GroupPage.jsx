@@ -2,7 +2,7 @@ import GroupCard from '../components/groupCard/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import * as api from '../apis/groupApi';
 
 const Container = styled.div`
@@ -33,18 +33,18 @@ const GroupPage = () => {
   const closeModal = () => setIsOpen(false);
 
   //그룹 조회 함수
-  const getGroups = async () => {
+  const getGroups = useCallback(async () => {
     try {
       const res = await api.getGroupsApi();
       setGroupList(res.data.result);
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getGroups();
-  }, [groupList]);
+  }, [getGroups]);
 
   return (
     <Container>

@@ -37,10 +37,12 @@ const Header = () => {
   return (
     <Container>
       <Wrapper>
-        <IconBox></IconBox>
+        <IconBox>
+          <Img src={setting} alt="set" />
+        </IconBox>
         <Link to="/">
           <IconBox>
-            <Img src={logo} alt="logo" />
+            <Img src={logo} alt="로고" />
             <Font>WhatShu</Font>
           </IconBox>
         </Link>
