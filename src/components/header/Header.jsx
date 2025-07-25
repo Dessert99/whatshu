@@ -3,6 +3,10 @@ import setting from '../../assets/img/setting.png';
 import notification from '../../assets/img/notification.png';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { LoginContext } from '../../contexts/LoginContext';
+
+import { authUpgradeApi } from '../../apis/userApi';
 
 const Container = styled.div`
   background-color: var(--mainBg200);
@@ -29,11 +33,30 @@ const Img = styled.img`
 `;
 
 const Header = () => {
+  const { userInfo, setUserInfo } = useContext(LoginContext);
+
+  const handleAuth = async () => {
+    const data = {
+      'userId': userInfo.id,
+      'password': 'saz8wt44cLqSLnnSO4Puy9OB2rpGz6R5pM6yGYHVS7gFVhUv1p',
+    }; //TODO: 관리자 권한 승격
+
+    try {
+      const res = await authUpgradeApi(data);
+      setUserInfo((prev) => ({
+        ...prev,
+        'role': res.data.result.role,
+      }));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <Container>
       <Wrapper>
         <IconBox>
-          <Img src={setting} alt="설정" />
+          <Img src={setting} alt="설정" onClick={handleAuth} />
         </IconBox>
         <Link to="/">
           <IconBox>

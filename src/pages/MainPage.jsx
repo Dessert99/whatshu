@@ -34,6 +34,7 @@ const LoginButton = styled.button`
   font-family: var(--buttonFont);
   font-weight: bold;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const MainPage = () => {

@@ -8,6 +8,7 @@ const CreateButton = styled.button`
   font-family: var(--buttonFont);
   font-weight: bold;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const Button = ({ children, onClick }) => {

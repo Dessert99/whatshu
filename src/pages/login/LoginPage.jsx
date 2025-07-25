@@ -14,7 +14,7 @@ const LoginPage = () => {
           <img src={loginIcon} alt="로그인 아이콘" />
         </div>
         <div className={styles.login__btn}>
-          <img src={googleLogin} alt="로그인버튼" onClick={handleLogin} />
+          <img style={{ cursor: 'pointer' }} src={googleLogin} alt="로그인버튼" onClick={handleLogin} />
         </div>
       </div>
     </section>

@@ -77,7 +77,7 @@ const GroupCard = (props) => {
         </Infor>
       </InfoWrapper>
       <Footer>
-        <Link to={`/group/${props.groupUuid}`}>
+        <Link to={`/group/${props.groupId}`}>
           <Button>그룹 상세 보기</Button>
         </Link>
       </Footer>
