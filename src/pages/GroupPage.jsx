@@ -64,10 +64,10 @@ const GroupPage = () => {
                 key={group.groupId}
                 name={group.name}
                 description={group.description}
-                memberCount={1}
+                participantCount={group.participantCount}
                 groupId={group.groupId}
-                todoCount={50}
-                doneCount={40}
+                incompleteEventCount={group.incompleteEventCount}
+                completedEventCount={group.completedEventCount}
               />
             );
           })}

@@ -33,25 +33,25 @@ const InfoValue = styled.p`
   margin: 0px;
 `;
 
-const GroupInfo = () => {
+const GroupInfo = ({ groupInfo }) => {
   return (
     <Container>
       <Header>
-        <Name>GDG</Name>
-        <Description>개발동아리</Description>
+        <Name>{groupInfo.name}</Name>
+        <Description>{groupInfo.description}</Description>
       </Header>
       <InfoWrapper>
         <Infor>
           <InfoLabel>그룹원</InfoLabel>
-          <InfoValue>1</InfoValue>
+          <InfoValue>{groupInfo.participantCount}</InfoValue>
         </Infor>
         <Infor>
           <InfoLabel>미 완료 이벤트</InfoLabel>
-          <InfoValue>20</InfoValue>
+          <InfoValue>{groupInfo.incompleteEventCount}</InfoValue>
         </Infor>
         <Infor>
           <InfoLabel>완료 이벤트</InfoLabel>
-          <InfoValue>30</InfoValue>
+          <InfoValue>{groupInfo.completedEventCount}</InfoValue>
         </Infor>
       </InfoWrapper>
     </Container>

@@ -3,6 +3,8 @@ import setting from '../../assets/img/setting.png';
 import notification from '../../assets/img/notification.png';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+//관리자
 // import { useContext } from 'react';
 // import { LoginContext } from '../../contexts/LoginContext';
 // import { authUpgradeApi } from '../../apis/userApi';
@@ -32,6 +34,7 @@ const Img = styled.img`
 `;
 
 const Header = () => {
+  //관리자
   // const { userInfo, setUserInfo } = useContext(LoginContext);
 
   return (

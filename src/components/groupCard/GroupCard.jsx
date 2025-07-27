@@ -65,15 +65,15 @@ const GroupCard = (props) => {
       <InfoWrapper>
         <Infor>
           <InfoLabel>그룹원</InfoLabel>
-          <InfoValue>{props.memberCount}</InfoValue>
+          <InfoValue>{props.participantCount}</InfoValue>
         </Infor>
         <Infor>
           <InfoLabel>미 완료 이벤트</InfoLabel>
-          <InfoValue>{props.todoCount}</InfoValue>
+          <InfoValue>{props.incompleteEventCount}</InfoValue>
         </Infor>
         <Infor>
           <InfoLabel>완료 이벤트</InfoLabel>
-          <InfoValue>{props.doneCount}</InfoValue>
+          <InfoValue>{props.completedEventCount}</InfoValue>
         </Infor>
       </InfoWrapper>
       <Footer>
