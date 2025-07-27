@@ -69,18 +69,24 @@ const EventModal = ({ isOpen, onClose, getEvents, groupId }) => {
     'description': '',
     'groupId': Number(groupId),
   });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleAddEvent(info);
-    getEvents();
-    onClose();
+    const res = await handleAddEvent(info);
+    if (res) {
+      await getEvents();
+      onClose();
+    }
   };
 
   const handleAddEvent = async (info) => {
     const res = await createEventApi(info);
     if (res.data.isSuccess) {
       alert('새로운 이벤트 생성되었습니다.');
-    } else alert('이벤트 생성에 실패하였습니다.');
+      return true;
+    } else {
+      alert('이벤트 생성에 실패하였습니다.');
+      return false;
+    }
   };
 
   useEffect(() => {

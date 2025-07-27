@@ -64,26 +64,29 @@ const ButtonBox = styled.div`
 const RedFont = styled.span`
   color: var(--subBg200);
 `;
-
 export default function GroupModal({ isOpen, onClose, getGroups }) {
   const [info, setInfo] = useState({
     'name': '',
     'description': '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleAddGroup(info);
-    getGroups();
-    onClose();
+    const res = await handleAddGroup(info);
+    if (res) {
+      await getGroups();
+      onClose();
+    }
   };
 
   const handleAddGroup = async (info) => {
     const res = await createGroupApi(info);
     if (res.data.isSuccess) {
       alert('새로운 그룹이 생성되었습니다.');
+      return true;
     } else {
       alert('그룹 생성에 실패하였습니다.');
+      return false;
     }
   };
 

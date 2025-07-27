@@ -9,7 +9,6 @@ import UserCheckPage from './pages/userCheck/UserCheckPage';
 import HelpCirclePage from './pages/helpCircle/HelpCirclePage';
 import MainPage from './pages/MainPage';
 import GroupDetailPage from './pages/GroupDetailPage';
-import EventDetailPage from './pages/EventDetailPage';
 
 //상태관리
 import { LoginContextProvider } from './contexts/LoginContext';
@@ -28,7 +27,6 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/group" element={<GroupPage />} />
               <Route path="/group/:groupId" element={<GroupDetailPage />} />
-              <Route path="/events/:eventId" element={<EventDetailPage />} />
               <Route path="/event" element={<NewEventPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/userCheck" element={<UserCheckPage />} />
