@@ -3,7 +3,7 @@ import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
 import { useState, useEffect, useCallback } from 'react';
-import * as api from '../apis/groupApi';
+import * as api from '../apis/api/group';
 
 const Container = styled.div`
   padding-bottom: 5rem;
@@ -35,7 +35,7 @@ const GroupPage = () => {
   //그룹 조회 함수
   const getGroups = useCallback(async () => {
     try {
-      const res = await api.getGroupsApi();
+      const res = await api.getGroups();
       setGroupList(res.data.result);
     } catch (e) {
       console.error(e);

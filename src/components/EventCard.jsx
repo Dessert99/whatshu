@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { createQRToken } from '../apis/qrApi';
+import { createQRToken } from '../apis/api/qrApi';
 import QrDisplay from './QrDisplay';
 import { useState, useRef, useEffect, useContext } from 'react';
 import QrScanner from 'qr-scanner';

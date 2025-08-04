@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import myIcon from '../assets/img/myIcon.png';
 import { useEffect, useContext } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
-import { loginApi, logoutApi } from '../apis/userApi';
+import { postLogout } from '../apis/api/user';
 import { Link } from 'react-router-dom';
 
+import { userInfoService } from '../apis/service/userService';
 const Container = styled.div`
   height: calc(100vh - 10.5rem);
 
@@ -52,28 +53,21 @@ const LogoutButton = styled.button`
 const MainPage = () => {
   const { userInfo, isLogin, setLogin, setUserInfo } = useContext(LoginContext);
 
+  //로그인 로직
   useEffect(() => {
-    const login = async () => {
-      try {
-        const res = await loginApi();
-        const { id, name, role } = res.data.result;
-        setUserInfo({
-          'id': id,
-          'name': name,
-          'role': role,
-        });
-        setLogin(true);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    login();
+    (async () => {
+      const info = await userInfoService();
+      //로그인 상태 변경
+      setUserInfo(info);
+      setLogin(true);
+    })();
   }, [setUserInfo, setLogin]);
 
+  // 이거 나중에 분리해보자
   const handleLogout = async () => {
     try {
-      const res = await logoutApi();
-      console.log(res);
+      const res = await postLogout();
+      console.log(res); // logout Successfull
       setUserInfo(null);
       setLogin(false);
     } catch (e) {

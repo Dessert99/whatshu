@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { createGroupApi } from '../apis/groupApi';
+import { postGroup } from '../apis/api/group';
 
 Modal.setAppElement('#root');
 
@@ -80,7 +80,7 @@ export default function GroupModal({ isOpen, onClose, getGroups }) {
   };
 
   const handleAddGroup = async (info) => {
-    const res = await createGroupApi(info);
+    const res = await postGroup(info);
     if (res.data.isSuccess) {
       alert('새로운 그룹이 생성되었습니다.');
       return true;

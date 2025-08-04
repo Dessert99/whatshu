@@ -4,7 +4,7 @@ import EventModal from '../EventModal';
 import { useState, useContext, useEffect, useCallback } from 'react';
 import EventCard from '../EventCard';
 import { EventContext } from '../../contexts/EventContext';
-import { getEventsApi } from '../../apis/eventApi';
+import { getEventsApi } from '../../apis/api/event';
 
 const Container = styled.div`
   padding-bottom: 5rem;

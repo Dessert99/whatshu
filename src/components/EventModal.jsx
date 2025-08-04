@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { createEventApi } from '../apis/eventApi';
+import { createEventApi } from '../apis/api/event';
 
 Modal.setAppElement('#root');
 const Container = styled.div`
