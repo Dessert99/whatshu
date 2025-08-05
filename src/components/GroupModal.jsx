@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { postGroup } from '../apis/api/group';
+import { postGroupService } from '../apis/service/groupService';
 
 Modal.setAppElement('#root');
 
@@ -64,29 +64,21 @@ const ButtonBox = styled.div`
 const RedFont = styled.span`
   color: var(--subBg200);
 `;
-export default function GroupModal({ isOpen, onClose, getGroups }) {
+export default function GroupModal({ isOpen, onClose }) {
   const [info, setInfo] = useState({
     'name': '',
     'description': '',
   });
 
+  //생성 이벤트
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await handleAddGroup(info);
-    if (res) {
-      await getGroups();
-      onClose();
-    }
-  };
-
-  const handleAddGroup = async (info) => {
-    const res = await postGroup(info);
-    if (res.data.isSuccess) {
+    const isSuccess = await postGroupService(info);
+    if (isSuccess) {
       alert('새로운 그룹이 생성되었습니다.');
-      return true;
+      onClose();
     } else {
       alert('그룹 생성에 실패하였습니다.');
-      return false;
     }
   };
 
@@ -95,6 +87,7 @@ export default function GroupModal({ isOpen, onClose, getGroups }) {
       setInfo({ 'name': '', 'description': '' });
     }
   }, [isOpen]);
+
   return (
     <Modal
       isOpen={isOpen}

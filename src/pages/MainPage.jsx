@@ -56,10 +56,14 @@ const MainPage = () => {
   //로그인 로직
   useEffect(() => {
     (async () => {
-      const info = await userInfoService();
-      //로그인 상태 변경
-      setUserInfo(info);
-      setLogin(true);
+      try {
+        const info = await userInfoService();
+        //로그인 상태 변경
+        setUserInfo(info);
+        setLogin(true);
+      } catch (e) {
+        console.error(e);
+      }
     })();
   }, [setUserInfo, setLogin]);
 

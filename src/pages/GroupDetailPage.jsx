@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import GroupInfo from '../components/detailComponents/GroupInfo';
 import SwitchMain from '../components/detailComponents/SwitchMain';
-import { getDetailGroup } from '../apis/api/group';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
+import { getGroupDetailService } from '../apis/service/groupService';
+
 const Container = styled.div`
   height: calc(100vh - 10.5rem);
   padding: 1rem;
@@ -23,19 +24,17 @@ const GroupDetailPage = () => {
     'incompleteEventCount': '',
   });
 
-  //TODO: 나중에 이름 바꿔야 함
-  const getDetailGrouppp = useCallback(async () => {
-    try {
-      const res = await getDetailGroup(groupId);
-      setGroupInfo(res.data.result);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [groupId]);
-
+  //그룹 상세 페이지 조회
   useEffect(() => {
-    getDetailGrouppp();
-  }, [getDetailGrouppp]);
+    (async () => {
+      try {
+        const info = await getGroupDetailService(groupId);
+        setGroupInfo(info);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  });
 
   return (
     <Container>

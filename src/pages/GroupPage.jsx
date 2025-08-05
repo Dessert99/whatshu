@@ -1,9 +1,9 @@
-import GroupCard from '../components/groupCard/GroupCard';
+import GroupCard from '../components/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState, useEffect, useCallback } from 'react';
-import * as api from '../apis/api/group';
+import { useState, useEffect } from 'react';
+import { getGroupService } from '../apis/service/groupService';
 
 const Container = styled.div`
   padding-bottom: 5rem;
@@ -32,19 +32,17 @@ const GroupPage = () => {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  //그룹 조회 함수
-  const getGroups = useCallback(async () => {
-    try {
-      const res = await api.getGroups();
-      setGroupList(res.data.result);
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
-
+  //그룹 불러오기 :  isOpen의존성 추가로 모달 닫히면 리스트 갱신
   useEffect(() => {
-    getGroups();
-  }, [getGroups]);
+    (async () => {
+      try {
+        const list = await getGroupService();
+        setGroupList(list);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, [isOpen]);
 
   return (
     <Container>
@@ -74,7 +72,7 @@ const GroupPage = () => {
         </GroupsWrapper>
       )}
 
-      <GroupModal isOpen={isOpen} onClose={closeModal} getGroups={getGroups} />
+      <GroupModal isOpen={isOpen} onClose={closeModal} />
     </Container>
   );
 };

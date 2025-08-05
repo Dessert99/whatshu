@@ -1,13 +1,19 @@
 import * as group from '../api/group';
 
 export const getGroupService = async () => {
-  try {
-    const data = await group.getGroups();
-    return data.result;
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
+  const data = await group.getGroups();
+  const result = data.result;
+  return result;
 };
 
-export const postGroupService = async () => {};
+export const postGroupService = async (info) => {
+  const data = await group.postGroup(info);
+  const isSuccess = data.isSuccess;
+  return isSuccess;
+};
+
+export const getGroupDetailService = async (groupId) => {
+  const data = await group.getDetailGroup(groupId);
+  const result = data.result;
+  return result;
+};

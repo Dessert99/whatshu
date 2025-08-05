@@ -1,22 +1,12 @@
 import instance from '../utils/axios';
 
 export const getUser = async () => {
-  try {
-    const res = await instance.get('/me');
-    return res.data;
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
+  const res = await instance.get('/me');
+  return res.data;
 };
 export const postAuthUpgrade = async (data) => {
-  try {
-    const res = await instance.post('/auth/up', data);
-    return res.data;
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
+  const res = await instance.post('/auth/up', data);
+  return res.data;
 };
 
 export const postLogout = async () => {
