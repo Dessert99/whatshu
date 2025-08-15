@@ -12,11 +12,6 @@ export const LoginContextProvider = ({ children }) => {
     'name': '???',
     'role': '???',
   });
-
-  // 로그인세팅
-
-  // const logoutSetting = (userData) => {};
-
   return (
     <>
       <LoginContext.Provider value={{ isLogin, userInfo, setLogin, setUserInfo }}>{children}</LoginContext.Provider>

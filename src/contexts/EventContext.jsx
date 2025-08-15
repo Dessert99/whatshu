@@ -27,7 +27,6 @@ export const EventContextProvider = ({ children }) => {
           selectedEvent,
           participants,
           selectEvent,
-
           updateParticipants,
         }}>
         {children}

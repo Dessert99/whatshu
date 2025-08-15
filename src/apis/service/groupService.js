@@ -1,8 +1,7 @@
 import * as group from '../api/group';
 
 export const getGroupService = async () => {
-  const data = await group.getGroups();
-  const result = data.result;
+  const { result } = await group.getGroups();
   return result;
 };
 

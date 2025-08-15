@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
 //페이지
-import NewEventPage from './pages/newEventPage/NewEventPage';
 import LoginPage from './pages/login/LoginPage';
 import GroupPage from './pages/GroupPage';
 import CalendarPage from './pages/calendar/CalendarPage';
@@ -27,7 +26,6 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/group" element={<GroupPage />} />
               <Route path="/group/:groupId" element={<GroupDetailPage />} />
-              <Route path="/event" element={<NewEventPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/userCheck" element={<UserCheckPage />} />
               <Route path="/helpCircle" element={<HelpCirclePage />} />

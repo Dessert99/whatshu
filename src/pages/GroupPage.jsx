@@ -2,8 +2,8 @@ import GroupCard from '../components/GroupCard';
 import GroupModal from '../components/GroupModal';
 import Button from '../components/Button';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { getGroupService } from '../apis/service/groupService';
+import { useState } from 'react';
+import { useGroupQuery } from '../queries/useGroupQuery';
 
 const Container = styled.div`
   padding-bottom: 5rem;
@@ -27,22 +27,12 @@ const NoMember = styled.p`
 
 const GroupPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [groupList, setGroupList] = useState([]);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  //그룹 불러오기 :  isOpen의존성 추가로 모달 닫히면 리스트 갱신
-  useEffect(() => {
-    (async () => {
-      try {
-        const list = await getGroupService();
-        setGroupList(list);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, [isOpen]);
+  const { data: groupList = [] } = useGroupQuery(isOpen);
+  console.log('groupList', groupList);
 
   return (
     <Container>
